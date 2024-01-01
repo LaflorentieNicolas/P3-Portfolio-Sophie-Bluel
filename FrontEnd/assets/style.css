@@ -295,3 +295,11 @@ a {
 a:hover {
   color: #b1663c;
 }
+
+/*----- Log In -----*/
+.login-menu {
+  display: grid;
+  grid-template-columns: 1fr; /* Une colonne pour chaque élément */
+  gap: 10px; /* Espace entre les éléments si nécessaire */
+  text-align: center; /* Centre le texte si nécessaire */
+}

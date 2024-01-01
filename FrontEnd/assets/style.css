@@ -107,6 +107,7 @@ section {
 }
 body {
   line-height: 1;
+  background-color: #fffef8;
 }
 ol,
 ul {
@@ -253,8 +254,15 @@ input[type="submit"] {
   background-color: #1d6154;
   margin: 2em auto;
   width: 180px;
+  height: 36px;
   text-align: center;
   border-radius: 60px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0e2f28;
 }
 
 footer nav ul {
@@ -276,14 +284,14 @@ footer nav ul {
   border: 1px solid #1d6154;
   border-radius: 25px;
   color: #1d6154;
-  background-color: white;
+  background-color: #fffef8;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .filter-button:hover {
-  color: white;
+  color: #fffef8;
   background-color: #1d6154;
 }
 
@@ -298,8 +306,49 @@ a:hover {
 
 /*----- Log In -----*/
 .login-menu {
-  display: grid;
-  grid-template-columns: 1fr; /* Une colonne pour chaque élément */
-  gap: 10px; /* Espace entre les éléments si nécessaire */
-  text-align: center; /* Centre le texte si nécessaire */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.login-menu h2 {
+  margin-bottom: 37px;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-login #email,
+#password {
+  height: 51px;
+  width: 379px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.form-login label {
+  margin-bottom: 7px;
+}
+
+#email {
+  margin-bottom: 30px;
+}
+
+#password {
+  margin-bottom: 10px;
+}
+
+.forgot-pass {
+  color: #3d3d3d;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
 }

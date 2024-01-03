@@ -159,6 +159,10 @@ h1 > span {
   letter-spacing: 0.1em;
 }
 
+a {
+  text-decoration: none;
+}
+
 h2 {
   font-family: "Syne";
   font-weight: 700;
@@ -295,7 +299,7 @@ footer nav ul {
   background-color: #1d6154;
 }
 
-a {
+.nav-button {
   text-decoration: none;
   color: black;
 }
@@ -318,12 +322,12 @@ a:hover {
   margin-bottom: 37px;
 }
 
-.form-login {
+#form-login {
   display: flex;
   flex-direction: column;
 }
 
-.form-login #email,
+#form-login #email,
 #password {
   height: 51px;
   width: 379px;
@@ -331,7 +335,7 @@ a:hover {
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-.form-login label {
+#form-login label {
   margin-bottom: 7px;
 }
 
@@ -343,7 +347,7 @@ a:hover {
   margin-bottom: 10px;
 }
 
-.forgot-pass {
+.forgot-password {
   color: #3d3d3d;
   font-family: Work Sans;
   font-size: 14px;
@@ -351,4 +355,9 @@ a:hover {
   font-weight: 500;
   line-height: normal;
   text-decoration-line: underline;
+}
+
+#error-message {
+  color: red;
+  margin-bottom: 10px;
 }

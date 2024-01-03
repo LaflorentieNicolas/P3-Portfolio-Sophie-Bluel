@@ -12,16 +12,21 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/login.js" defer></script>
+    <script src="./scripts/global.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <a href="./index.html" class="logo"
+        ><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
+      >
       <nav>
         <ul>
-          <li><a href="#projets">projets</a></li>
-          <li><a href="#contact">contact</a></li>
-          <li><a href="/login.html">login</a></li>
+          <li><a href="#projets" class="nav-button">projets</a></li>
+          <li><a href="#contact" class="nav-button">contact</a></li>
+          <li id="login-buttom"><a href="login.html"  class="nav-button">login</a></li>
+        </li>
+        <li id="logout-buttom"><a href="#"  class="nav-button">logout</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -29,14 +34,16 @@
     <main>
       <section class="login-menu">
         <h2>Log In</h2>
-        <form class="form-login" method="post">
+        <form id="form-login" method="post">
+          <p id="error-message"></p>
           <label for="email">E-mail</label>
           <input id="email" type="email" name="email" required />
-          <label for="pass">Mot de passe</label>
+          <label for="password">Mot de passe</label>
           <input id="password" type="password" name="password" required />
           <input type="submit" name="submit-login" value="Se connecter" />
         </form>
-        <a href="#" class="forgot-pass">Mot de passe oublié</a>
+
+        <a href="#" class="forgot-password">Mot de passe oublié</a>
       </section>
     </main>
     <footer>

@@ -276,6 +276,7 @@ footer nav ul {
 }
 
 /*----- filtres -----*/
+
 .filters {
   display: flex;
   justify-content: center;
@@ -360,4 +361,99 @@ a:hover {
 #error-message {
   color: red;
   margin-bottom: 10px;
+}
+
+/*----- Barre noir mode édition -----*/
+.black-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 59px;
+  background-color: black;
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+}
+
+.black-bar a {
+  display: flex;
+}
+
+.black-bar p {
+  font-size: 16px;
+}
+
+.fa-regular {
+  padding-right: 12px;
+  font-size: 14px;
+}
+
+.black-bar .fa-regular,
+.black-bar a {
+  color: white;
+}
+
+.black-bar:hover .fa-regular,
+.black-bar:hover a {
+  color: #b1663c;
+}
+
+/*----- Modale button -----*/
+.title-modal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 139px;
+}
+
+#projets {
+  margin: 0;
+}
+
+.modal-style {
+  margin-left: 31px;
+  margin-top: -35px;
+}
+
+.modal-style .fa-regular,
+.modal-style a {
+  color: black;
+}
+.modal-style:hover .fa-regular,
+.modal-style:hover a {
+  color: #b1663c;
+}
+
+/*----- Modale -----*/
+.modal {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-wrapper {
+  overflow: auto;
+  width: 630px;
+  height: 688px;
+  max-width: calc(100vh - 20px);
+  max-height: calc(100vh - 20px);
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.modal-gallery-title {
+  display: flex;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.modal-image {
+  width: 76.86px;
+  height: auto;
 }

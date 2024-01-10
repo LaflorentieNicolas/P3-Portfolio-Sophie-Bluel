@@ -10,22 +10,36 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="./scripts/homePage.js" defer></script>
     <script src="./scripts/global.js" async></script>
+    <script src="./scripts/modal.js" async></script>
   </head>
   <body>
+    <div class="black-bar" id="black-bar">
+      <a href="#">
+        <i class="fa-regular fa-pen-to-square"></i>
+        <p>Mode édition</p></a
+      >
+    </div>
     <header>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
           <li><a href="#projets" class="nav-button">projets</a></li>
           <li><a href="#contact" class="nav-button">contact</a></li>
-          <li id="login-buttom">
+          <li id="login-button">
             <a href="login.html" class="nav-button">login</a>
           </li>
-          <li id="logout-buttom"><a href="#" class="nav-button">logout</a></li>
+          <li id="logout-button"><a href="#" class="nav-button">logout</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -55,7 +69,36 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2 id="projets">Mes Projets</h2>
+        <div class="title-modal-wrapper">
+          <h2 id="projets">Mes Projets</h2>
+
+          <!-- modale -->
+          <div class="modal-style">
+            <a href="#modal" class="modal-button" id="js-button-modal"
+              ><i class="fa-regular fa-pen-to-square"></i>modifier</a
+            >
+          </div>
+        </div>
+
+        <aside
+          class="modal"
+          id="modal"
+          aria-hidden="true"
+          role="dialog"
+          aria-modal="false"
+          style="display: none"
+        >
+          <div class="modal-wrapper modal-stop" id="modal-wrapper">
+            <button class="button-close-modal" id="button-close-modal">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="modal-gallery-title">Galerie photo</h3>
+            <div id="modal-gallery"></div>
+            <button class="filter-button" id="add-pics">
+              Ajouter une photo
+            </button>
+          </div>
+        </aside>
 
         <!-- Boutons filtres -->
         <div id="filters" class="filters">

@@ -1,8 +1,8 @@
 // Stocke de l'URL de l'API sur une constante
 const API_LOGIN = "http://localhost:5678/api/users/login";
 // Deux types de message d'erreur
-const INCORRECT_PASSWORD = "Mot de passe incorrect";
-const INCORRECT_USER = "Identifiants incorrects. Veuillez réessayer.";
+const INCORRECT_USER =
+  "Identifiant ou mot de passe incorrect. Veuillez réessayer.";
 // Recupération des champs/boutons du login menu
 const form = document.getElementById("form-login");
 const emailInput = document.getElementById("email");
@@ -36,9 +36,7 @@ form.addEventListener("submit", async function (event) {
     .then((response) => {
       if (response.ok) {
         return response.json();
-      } else if (response.status === 401) {
-        errorMessageElement.textContent = INCORRECT_PASSWORD;
-      } else if (response.status === 404) {
+      } else if (response.status === 401 || response.status === 404) {
         errorMessageElement.textContent = INCORRECT_USER;
       }
     })

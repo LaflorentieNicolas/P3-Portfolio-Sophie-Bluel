@@ -1,9 +1,12 @@
-// gestion de ce qui doit apparaitre sur index.html lorsque admin est log.
+// Gestion de ce qui doit apparaitre sur index.html lorsque admin est log.
 
 // récupération des balises par leurs ID (login, logout et les filtres)
-const logout = document.getElementById("logout-buttom");
-const login = document.getElementById("login-buttom");
+const logout = document.getElementById("logout-button");
+const login = document.getElementById("login-button");
 const filters = document.getElementById("filters");
+const modal = document.getElementById("modal");
+const blackBar = document.getElementById("black-bar");
+const modalButton = document.getElementById("js-modal");
 
 // Lorsque l'on click sur logout, permet de supprimer le token stocké dans le localStorage et de recharger la page
 logout.addEventListener("click", () => {
@@ -19,7 +22,7 @@ function getToken() {
   return token;
 }
 // cette fonction est appelée au chargement de la page, et utilise le token pour déterminer si l'utilisateur est connecté
-// Si un token existe, alors cela masque le bouton "login" et les filtres, sinon cela masque logout
+// Si un token existe, alors cela masque le bouton "login", filtres et modale, sinon cela masque logout
 function init() {
   const token = getToken();
   if (token) {
@@ -28,6 +31,8 @@ function init() {
     filters.style.display = "none";
   } else {
     logout.style.display = "none";
+    blackBar.style.display = "none";
+    modalButton.style.display = "none";
   }
 }
 

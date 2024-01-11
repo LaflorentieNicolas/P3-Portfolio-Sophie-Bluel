@@ -14,7 +14,6 @@ const openModal = function (e) {
 };
 
 const closeModal = function (e) {
-  if (modal === null) return;
   e.preventDefault();
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", "true");
@@ -23,10 +22,8 @@ const closeModal = function (e) {
     .querySelector("#button-close-modal")
     .removeEventListener("click", closeModal);
 };
-
-document.querySelectorAll(".modal-style").forEach((a) => {
-  a.addEventListener("click", openModal);
-});
+// Récupération du bouton pour ouvrir la modal
+document.getElementById("js-button-modal").addEventListener("click", openModal);
 
 // fermer la modale avec le bouton clavier Esc
 window.addEventListener("keydown", function (e) {
@@ -37,13 +34,13 @@ window.addEventListener("keydown", function (e) {
 
 // ----------Création modale gallerie-------//
 
-const imagesModalContainer = document.getElementById("modal-gallery");
+const worksContainer = document.getElementById("modal-gallery");
 
 const reponses = fetch("http://localhost:5678/api/works")
   .then((reponse) => reponse.json())
   .then((datas) => {
     datas.forEach((works) => {
-      const figure = document.createElement("modal-figure");
+      const figure = document.createElement("figure");
       const figureCaption = document.createElement("modal-figcaption");
       const figureImage = document.createElement("img");
       const deleteIcon = document.createElement("i");
@@ -55,7 +52,7 @@ const reponses = fetch("http://localhost:5678/api/works")
 
       deleteIcon.className = "fa-regular fa-trash-can";
 
-      imagesModalContainer.appendChild(figure);
+      worksContainer.appendChild(figure);
       figure.appendChild(figureImage);
       figure.appendChild(figureCaption);
       figure.appendChild(deleteIcon);

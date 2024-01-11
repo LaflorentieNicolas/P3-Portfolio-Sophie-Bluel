@@ -6,7 +6,7 @@ const login = document.getElementById("login-button");
 const filters = document.getElementById("filters");
 const modal = document.getElementById("modal");
 const blackBar = document.getElementById("black-bar");
-const modalButton = document.getElementById("js-modal");
+const modalButton = document.getElementById("js-button-modal");
 
 // Lorsque l'on click sur logout, permet de supprimer le token stocké dans le localStorage et de recharger la page
 logout.addEventListener("click", () => {

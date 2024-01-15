@@ -89,12 +89,17 @@
           style="display: none"
         >
           <div class="modal-wrapper modal-stop" id="modal-wrapper">
-            <button class="button-close-modal" id="button-close-modal">
-              <i class="fa-solid fa-xmark"></i>
+            <button
+              data-target="#modal"
+              class="button-close-modal"
+              id="button-close-modal"
+            >
+              <i data-target="#modal" class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="modal-gallery-title">Galerie photo</h3>
+            <p id="error-modal-message"></p>
             <div class="modal-gallery" id="modal-gallery"></div>
-            <button class="filter-button" id="add-pics">
+            <button class="filter-button" id="add-project">
               Ajouter une photo
             </button>
           </div>

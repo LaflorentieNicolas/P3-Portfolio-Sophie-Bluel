@@ -99,9 +99,38 @@
             <h3 class="modal-gallery-title">Galerie photo</h3>
             <p id="error-modal-message"></p>
             <div class="modal-gallery" id="modal-gallery"></div>
-            <button class="filter-button" id="add-project">
+            <button class="filter-button" id="add-project-button">
               Ajouter une photo
             </button>
+          </div>
+          <div
+            class="modal-upload-project"
+            id="modal-upload-project-container"
+            style="display: none"
+          >
+            <button class="back-button" id="back-button">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button
+              data-target="#modal"
+              class="button-close-modal"
+              id="button-close-modal"
+            >
+              <i data-target="#modal" class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="modal-gallery-title">Ajout Photo</h3>
+            <form action="" method="POST">
+              <div class="drop-project-container" id="drop-project-container">
+                <i class="fa-regular fa-image"></i>
+
+                <input
+                  type="picture"
+                  name="project-picture"
+                  value="+ Ajouter une photo"
+                />
+                <p>jpg,png : 4mo max</p>
+              </div>
+            </form>
           </div>
         </aside>
 
@@ -145,3 +174,4 @@
     </footer>
   </body>
 </html>
+é

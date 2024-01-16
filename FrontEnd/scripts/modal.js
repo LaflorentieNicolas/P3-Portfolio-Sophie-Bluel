@@ -1,4 +1,7 @@
 const APIWORKS_URL = "http://localhost:5678/api/works";
+
+const modalWrapper = document.getElementById("modal-wrapper");
+
 // récupére la modale associée à l'attribut href de l'HTML
 const openModal = function (e) {
   e.preventDefault();
@@ -11,10 +14,14 @@ const openModal = function (e) {
 
 const closeModal = function (e) {
   e.preventDefault();
-  const target = document.querySelector(e.target.dataset.target);
-  target.style.display = "none";
-  target.setAttribute("aria-hidden", "true");
-  target.removeAttribute("aria-modal");
+  const target = document.querySelector(
+    e.target.dataset.target || e.target.getAttribute("href")
+  );
+  if (target) {
+    target.style.display = "none";
+    target.setAttribute("aria-hidden", "true");
+    target.removeAttribute("aria-modal");
+  }
 };
 // Récupération du bouton pour ouvrir la modale
 document.getElementById("js-button-modal").addEventListener("click", openModal);
@@ -23,15 +30,28 @@ document
   .querySelector("#button-close-modal")
   .addEventListener("click", closeModal);
 
-// fermer la modale avec le bouton clavier Esc
-window.addEventListener("keydown", function (e) {
-  console.log("Key pressed:", e.key);
-  if (e.key === "Escape") {
+// Ajout d'un événement de clic à l'objet window pour fermer la modal en cliquant en dehors
+window.addEventListener("click", function (e) {
+  console.log("cli");
+  const modal = document.getElementById("modal");
+
+  // Vérifiez si l'élément cliqué est en dehors de la modal et de son contenu
+  if (e.target === modal) {
     closeModal(e);
   }
 });
 
-document.getElementById(modal);
+// Ajout d'un événement de clic à l'élément modal pour empêcher la propagation du clic
+document.getElementById("modal").addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+// fermer la modale avec le bouton clavier Esc
+window.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeModal(e);
+  }
+});
 
 // ----------Création modale gallerie-------//
 
@@ -65,7 +85,7 @@ const reponses = fetch("http://localhost:5678/api/works")
     });
   });
 
-// Suppression d'un projet de la modale
+// Modale suppression d'un projet
 
 const errorMessageModal = document.getElementById("error-modal-message");
 const DELETE_ERROR = "Erreur de suppression.";
@@ -113,5 +133,19 @@ function deleteProjectById(projectId) {
   }
 }
 
-// Ajouter des projets
-const addProject = document.getElementById("add-project");
+// Modal ajouter des projets
+const modalUploadProjectContainer = document.getElementById(
+  "modal-upload-project-container"
+);
+const addProjectButton = document.getElementById("add-project-button");
+const backButton = document.getElementById("back-button");
+
+addProjectButton.addEventListener("click", function () {
+  modalWrapper.style.display = "none";
+  modalUploadProjectContainer.style.display = "flex";
+});
+
+backButton.addEventListener("click", function () {
+  modalWrapper.style.display = "flex";
+  modalUploadProjectContainer.style.display = "none";
+});

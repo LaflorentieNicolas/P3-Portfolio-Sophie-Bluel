@@ -464,7 +464,8 @@ a:hover {
   height: 104.08px;
 }
 
-.button-close-modal {
+.button-close-modal-1,
+.button-close-modal-2 {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -484,7 +485,7 @@ a:hover {
   grid-column-gap: 9px;
   margin: 0px 80px 0px 80px;
   padding-bottom: 38px;
-  border-bottom: solid 2px #b3b3b3;
+  border-bottom: solid 1px #b3b3b3;
 }
 
 .modal-wrapper .filter-button {

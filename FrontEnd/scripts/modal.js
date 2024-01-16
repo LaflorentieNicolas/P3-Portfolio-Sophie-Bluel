@@ -1,8 +1,9 @@
 const APIWORKS_URL = "http://localhost:5678/api/works";
 
 const modalWrapper = document.getElementById("modal-wrapper");
+const modalContainer = document.getElementById("modal");
 
-// récupére la modale associée à l'attribut href de l'HTML
+// ouverture de la modal en clickant sur la balise href
 const openModal = function (e) {
   e.preventDefault();
   const target = document.querySelector(e.target.getAttribute("href"));
@@ -12,44 +13,42 @@ const openModal = function (e) {
   target.setAttribute("aria-modal", "true");
 };
 
-const closeModal = function (e) {
-  e.preventDefault();
-  const target = document.querySelector(
-    e.target.dataset.target || e.target.getAttribute("href")
-  );
-  if (target) {
-    target.style.display = "none";
-    target.setAttribute("aria-hidden", "true");
-    target.removeAttribute("aria-modal");
-  }
+const closeModal = function (target) {
+  target.style.display = "none";
+  target.setAttribute("aria-hidden", "true");
+  target.removeAttribute("aria-modal");
 };
-// Récupération du bouton pour ouvrir la modale
+
+// Récupération du bouton pour ouvrir la modal
 document.getElementById("js-button-modal").addEventListener("click", openModal);
 
+// Fermer la modal 1 "galerie" avec la croix
 document
-  .querySelector("#button-close-modal")
-  .addEventListener("click", closeModal);
+  .querySelector("#button-close-modal-1")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    closeModal(modalContainer);
+  });
 
-// Ajout d'un événement de clic à l'objet window pour fermer la modal en cliquant en dehors
+// Fermer la modal 2 "ajout photo" avec la croix
+document
+  .querySelector("#button-close-modal-2")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    closeModal(modalContainer);
+  });
+
+// Fermer la modal en cliquant à l'extérieur
 window.addEventListener("click", function (e) {
-  console.log("cli");
-  const modal = document.getElementById("modal");
-
-  // Vérifiez si l'élément cliqué est en dehors de la modal et de son contenu
-  if (e.target === modal) {
-    closeModal(e);
+  if (e.target === modalContainer) {
+    closeModal(modalContainer);
   }
 });
 
-// Ajout d'un événement de clic à l'élément modal pour empêcher la propagation du clic
-document.getElementById("modal").addEventListener("click", function (e) {
-  e.stopPropagation();
-});
-
-// fermer la modale avec le bouton clavier Esc
+// Fermer la modal avec le bouton clavier Esc
 window.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    closeModal(e);
+    closeModal(modalContainer);
   }
 });
 
@@ -145,6 +144,7 @@ addProjectButton.addEventListener("click", function () {
   modalUploadProjectContainer.style.display = "flex";
 });
 
+// revenir sur la modal 1 en utilisant le bouton <- ça change le display de la modal 2 en none la 1 en flex
 backButton.addEventListener("click", function () {
   modalWrapper.style.display = "flex";
   modalUploadProjectContainer.style.display = "none";

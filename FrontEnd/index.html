@@ -119,7 +119,7 @@
               <i data-target="#modal" class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="modal-gallery-title">Ajout Photo</h3>
-            <form action="" method="POST">
+            <form id="form-upload" action="" method="POST">
               <div class="drop-project-container" id="drop-project-container">
                 <i class="fa-regular fa-image"></i>
 
@@ -129,6 +129,22 @@
                   value="+ Ajouter une photo"
                 />
                 <p>jpg,png : 4mo max</p>
+              </div>
+
+              <label for="picture-title">Titre</label>
+              <input type="text" name="picture-title" id="picture-title" />
+
+              <label for="category-choise">Catégorie</label>
+              <select name="category" id="modal-photo-category">
+                <option value="" selected></option>
+              </select>
+              <div class="confirm-button-container">
+                <input
+                  id="confirm-button"
+                  type="submit"
+                  name="submit-button"
+                  value="Valider"
+                />
               </div>
             </form>
           </div>

@@ -8,11 +8,6 @@ const modal = document.getElementById("modal");
 const blackBar = document.getElementById("black-bar");
 const modalButton = document.getElementById("js-button-modal");
 
-// Lorsque l'on click sur logout, permet de supprimer le token stocké dans le localStorage et de recharger la page
-logout.addEventListener("click", () => {
-  localStorage.removeItem("token");
-  window.location.reload();
-});
 // récupère le token du localStorage, s'il n'y en a pas alors null, sinon elle renvoie le token
 function getToken() {
   const token = localStorage.getItem("token");
@@ -25,8 +20,13 @@ function getToken() {
 // Si un token existe, alors cela masque le bouton "login", filtres et modale, sinon cela masque logout
 function init() {
   const token = getToken();
+  console.log(token);
   if (token) {
-    console.log(filters);
+    // Lorsque l'on click sur logout, permet de supprimer le token stocké dans le localStorage et de recharger la page
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.reload();
+    });
     login.style.display = "none";
     filters.style.display = "none";
   } else {

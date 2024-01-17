@@ -76,6 +76,7 @@ const reponses = fetch("http://localhost:5678/api/works")
       figure.appendChild(figureImage);
       figure.appendChild(figureCaption);
       figure.appendChild(deleteIcon);
+      figure.setAttribute("data-id", work.id);
 
       deleteIcon.addEventListener("click", function (event) {
         event.preventDefault();

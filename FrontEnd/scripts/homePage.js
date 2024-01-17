@@ -19,6 +19,7 @@ function addWorkToDom(work) {
   image.setAttribute("src", work.imageUrl);
   image.setAttribute("alt", work.title);
   figureBalise.appendChild(image);
+  figureBalise.setAttribute("data-id", work.id);
 
   let caption = document.createElement("figcaption");
   caption.textContent = work.title;

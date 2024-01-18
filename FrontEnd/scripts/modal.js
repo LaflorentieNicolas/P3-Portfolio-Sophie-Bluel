@@ -52,7 +52,7 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-// ----------Création modale gallerie-------//
+// ----------Création modale gallerie----------//
 
 const worksContainer = document.getElementById("modal-gallery");
 
@@ -85,7 +85,7 @@ const reponses = fetch("http://localhost:5678/api/works")
     });
   });
 
-// Modale suppression d'un projet
+// Modale 1 suppression d'un projet
 
 const errorMessageModal = document.getElementById("error-modal-message");
 const DELETE_ERROR = "Erreur de suppression.";
@@ -133,20 +133,63 @@ function deleteProjectById(projectId) {
   }
 }
 
-// Modal ajouter des projets
+// ----------Modal 2 ajouter des projets----------
+
+// Container de la modal 2
 const modalUploadProjectContainer = document.getElementById(
   "modal-upload-project-container"
 );
+// Récupération du bouton "Ajouter une photo" présent sur modal 1"
 const addProjectButton = document.getElementById("add-project-button");
+// Récupération du bouton <- de la modal 2
 const backButton = document.getElementById("back-button");
+// Récupération du bouton "+ Ajouter une photo"
 
+// Aller sur la modal 2 en clickant sur le bouton "Ajouter une photo" présent sur la modal 1
 addProjectButton.addEventListener("click", function () {
   modalWrapper.style.display = "none";
   modalUploadProjectContainer.style.display = "flex";
 });
 
-// revenir sur la modal 1 en utilisant le bouton <- ça change le display de la modal 2 en none la 1 en flex
+// Revenir sur la modal 1 en utilisant le bouton <- ça change le display de la modal 2 en none la 1 en flex
 backButton.addEventListener("click", function () {
   modalWrapper.style.display = "flex";
   modalUploadProjectContainer.style.display = "none";
+});
+
+////////////////////////////////////////////////////////////
+const projectPictureInput = document.getElementById("project-picture-input");
+const dropProjectContainer = document.getElementById("drop-project-container");
+
+projectPictureInput.addEventListener("change", function (event) {
+  const file = event.target.files[0];
+
+  if (file) {
+    // Cacher les balises enfants de dropProjectContainer si un fichier est sélectionné
+    dropProjectContainer.childNodes.forEach((child) => {
+      if (child.nodeType === 1) {
+        child.style.display = "none";
+      }
+    });
+
+    // Créer un objet FileReader pour lire le contenu du fichier
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const thumbnailImage = document.createElement("img");
+      thumbnailImage.src = e.target.result;
+      thumbnailImage.alt = "Thumbnail";
+      thumbnailImage.classList.add("thumbnail-image");
+
+      // Appliquer les styles à l'aperçu de l'image pour qu'il rentre dans le container drop-project-container
+      thumbnailImage.style.maxHeight = "100%";
+      thumbnailImage.style.width = "auto";
+
+      // Ajouter l'aperçu de l'image dans le container
+      dropProjectContainer.appendChild(thumbnailImage);
+    };
+
+    // Charger le contenu du fichier en tant que Data URL
+    reader.readAsDataURL(file);
+  }
 });

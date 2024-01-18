@@ -72,14 +72,14 @@
         <div class="title-modal-wrapper">
           <h2 id="projets">Mes Projets</h2>
 
-          <!-- modale -->
+          <!----------Bouton ouverture de la modal---------->
           <div class="modal-style" id="js-button-modal">
             <a href="#modal" class="modal-button"
               ><i class="fa-regular fa-pen-to-square"></i>modifier</a
             >
           </div>
         </div>
-
+        <!----------Container des modal---------->
         <aside
           class="modal"
           id="modal"
@@ -88,6 +88,7 @@
           aria-modal="false"
           style="display: none"
         >
+          <!----------Modal 1---------->
           <div class="modal-wrapper modal-stop" id="modal-wrapper">
             <button
               data-target="#modal"
@@ -103,11 +104,13 @@
               Ajouter une photo
             </button>
           </div>
+          <!----------Modal 2---------->
           <div
             class="modal-upload-project"
             id="modal-upload-project-container"
             style="display: none"
           >
+            <!-- Bouton : <- -->
             <button class="back-button" id="back-button">
               <i class="fa-solid fa-arrow-left"></i>
             </button>
@@ -124,10 +127,17 @@
                 <i class="fa-regular fa-image"></i>
 
                 <input
-                  type="picture"
+                  type="file"
                   name="project-picture"
-                  value="+ Ajouter une photo"
+                  id="project-picture-input"
+                  style="display: none"
                 />
+                <label
+                  for="project-picture-input"
+                  class="button-project-file-upload"
+                >
+                  + Ajouter une photo
+                </label>
                 <p>jpg,png : 4mo max</p>
               </div>
 
@@ -150,7 +160,7 @@
           </div>
         </aside>
 
-        <!-- Boutons filtres -->
+        <!----------Boutons filtres---------->
         <div id="filters" class="filters">
           <button class="filter-button" id="filter-tous">Tous</button>
           <button class="filter-button" id="filter-objets">Objets</button>
@@ -163,7 +173,7 @@
         </div>
 
         <div class="gallery">
-          <!-- supression des balises figure -->
+          <!----------supression des balises figure afin qu'elles soient déployées en JS---------->
         </div>
       </section>
       <section id="contact">

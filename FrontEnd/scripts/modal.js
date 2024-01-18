@@ -157,7 +157,7 @@ backButton.addEventListener("click", function () {
   modalUploadProjectContainer.style.display = "none";
 });
 
-////////////////////////////////////////////////////////////
+// -----Création d'une miniature lorsque l'on choisi l'image à upload-----
 const projectPictureInput = document.getElementById("project-picture-input");
 const dropProjectContainer = document.getElementById("drop-project-container");
 

@@ -2,7 +2,7 @@ const APIWORKS_URL = "http://localhost:5678/api/works";
 
 const modalWrapper = document.getElementById("modal-wrapper");
 const modalContainer = document.getElementById("modal");
-
+const modalUploadProjectContainer = document.getElementById("modal2");
 // ouverture de la modal en clickant sur la balise href
 const openModal = function (e) {
   e.preventDefault();
@@ -35,7 +35,7 @@ document
   .querySelector("#button-close-modal-2")
   .addEventListener("click", function (e) {
     e.preventDefault();
-    closeModal(modalContainer);
+    closeModal(modalUploadProjectContainer);
   });
 
 // Fermer la modal en cliquant à l'extérieur
@@ -43,12 +43,16 @@ window.addEventListener("click", function (e) {
   if (e.target === modalContainer) {
     closeModal(modalContainer);
   }
+  if (e.target === modalUploadProjectContainer) {
+    closeModal(modalUploadProjectContainer);
+  }
 });
 
 // Fermer la modal avec le bouton clavier Esc
 window.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     closeModal(modalContainer);
+    closeModal(modalUploadProjectContainer);
   }
 });
 
@@ -132,64 +136,3 @@ function deleteProjectById(projectId) {
       .catch((error) => console.error(error));
   }
 }
-
-// ----------Modal 2 ajouter des projets----------
-
-// Container de la modal 2
-const modalUploadProjectContainer = document.getElementById(
-  "modal-upload-project-container"
-);
-// Récupération du bouton "Ajouter une photo" présent sur modal 1"
-const addProjectButton = document.getElementById("add-project-button");
-// Récupération du bouton <- de la modal 2
-const backButton = document.getElementById("back-button");
-// Récupération du bouton "+ Ajouter une photo"
-
-// Aller sur la modal 2 en clickant sur le bouton "Ajouter une photo" présent sur la modal 1
-addProjectButton.addEventListener("click", function () {
-  modalWrapper.style.display = "none";
-  modalUploadProjectContainer.style.display = "flex";
-});
-
-// Revenir sur la modal 1 en utilisant le bouton <- ça change le display de la modal 2 en none la 1 en flex
-backButton.addEventListener("click", function () {
-  modalWrapper.style.display = "flex";
-  modalUploadProjectContainer.style.display = "none";
-});
-
-// -----Création d'une miniature lorsque l'on choisi l'image à upload-----
-const projectPictureInput = document.getElementById("project-picture-input");
-const dropProjectContainer = document.getElementById("drop-project-container");
-
-projectPictureInput.addEventListener("change", function (event) {
-  const file = event.target.files[0];
-
-  if (file) {
-    // Cacher les balises enfants de dropProjectContainer si un fichier est sélectionné
-    dropProjectContainer.childNodes.forEach((child) => {
-      if (child.nodeType === 1) {
-        child.style.display = "none";
-      }
-    });
-
-    // Créer un objet FileReader pour lire le contenu du fichier
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-      const thumbnailImage = document.createElement("img");
-      thumbnailImage.src = e.target.result;
-      thumbnailImage.alt = "Thumbnail";
-      thumbnailImage.classList.add("thumbnail-image");
-
-      // Appliquer les styles à l'aperçu de l'image pour qu'il rentre dans le container drop-project-container
-      thumbnailImage.style.maxHeight = "100%";
-      thumbnailImage.style.width = "auto";
-
-      // Ajouter l'aperçu de l'image dans le container
-      dropProjectContainer.appendChild(thumbnailImage);
-    };
-
-    // Charger le contenu du fichier en tant que Data URL
-    reader.readAsDataURL(file);
-  }
-});

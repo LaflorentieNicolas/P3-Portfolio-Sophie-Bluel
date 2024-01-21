@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="./scripts/homePage.js" defer></script>
     <script src="./scripts/global.js" async></script>
-    <script src="./scripts/modal.js" async></script>
+    <script src="./scripts/modal1.js" async></script>
+    <script src="./scripts/modal2.js" async></script>
   </head>
   <body>
     <div class="black-bar" id="black-bar">
@@ -104,13 +105,19 @@
               Ajouter une photo
             </button>
           </div>
-          <!----------Modal 2---------->
-          <div
-            class="modal-upload-project"
-            id="modal-upload-project-container"
-            style="display: none"
-          >
-            <!-- Bouton : <- -->
+        </aside>
+
+        <!----------Modal 2---------->
+        <aside
+          class="modal"
+          id="modal2"
+          aria-hidden="true"
+          role="dialog"
+          aria-modal="false"
+          style="display: none"
+        >
+          <div class="modal-upload-project" id="modal-upload-project-container">
+            <!-- Bouton : <- back -->
             <button class="back-button" id="back-button">
               <i class="fa-solid fa-arrow-left"></i>
             </button>
@@ -122,6 +129,7 @@
               <i data-target="#modal" class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="modal-gallery-title">Ajout Photo</h3>
+            <!-- container pour upload une photo -->
             <form id="form-upload" action="" method="POST">
               <div class="drop-project-container" id="drop-project-container">
                 <i class="fa-regular fa-image"></i>
@@ -146,8 +154,10 @@
 
               <label for="category-choise">Catégorie</label>
               <select name="category" id="modal-photo-category">
-                <option value="" selected></option>
+                <option value="-1" selected></option>
               </select>
+              <p class="upload-message-error" id="upload-message-error"></p>
+              <!-- Bouton Valider, afin d'upload une photo -->
               <div class="confirm-button-container">
                 <input
                   id="confirm-button"

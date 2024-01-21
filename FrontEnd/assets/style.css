@@ -269,6 +269,10 @@ input[type="submit"]:hover {
   background-color: #0e2f28;
 }
 
+input[type="submit"]:disabled {
+  background-color: #a7a7a7;
+}
+
 footer nav ul {
   display: flex;
   justify-content: flex-end;
@@ -630,11 +634,15 @@ select[name="category"] {
 }
 
 #confirm-button {
-  background-color: #a7a7a7;
+  /* background-color: #a7a7a7; */
   margin-top: 32px;
   margin-bottom: 35px;
 }
 
 .confirm-button-container {
   border-top: 1px solid #b3b3b3;
+}
+
+.upload-message-error {
+  color: red;
 }

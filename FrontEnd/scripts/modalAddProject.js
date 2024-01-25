@@ -92,8 +92,6 @@ loadCategories();
 // -----Vérification des conditions requises afin d'upload une photo-----
 // Selection de l'input file permettant de choisir l'image à upload
 const thumbnailImage = document.getElementById("project-picture-input");
-// Sélection du paragraphe pour le message d'erreur
-const uploadMessageError = document.getElementById("upload-message-error");
 // Selection de l'input texte pour le titre
 const pictureTitle = document.getElementById("picture-title");
 // Sélection du bouton Valider
@@ -113,14 +111,10 @@ function checkConfirmationButton(event) {
   if (isSubmitButtonValid) {
     // Si les conditions sont validées, alors le bouton n'est plus en disabled
     confirmButton.disabled = false;
-    // Effacer le message d'erreur
-    uploadMessageError.textContent = "";
+
     return true;
   } else {
     confirmButton.disabled = true;
-    // Afficher un message d'erreur si certaines conditions ne sont pas remplies
-    uploadMessageError.textContent =
-      "Veuillez remplir tous les champs et ajouter une photo.";
 
     return false;
   }
@@ -181,9 +175,9 @@ async function addProject() {
     const galleryModal = document.getElementById("modal-gallery");
 
     galleryModal.appendChild(result.figure);
-    //Actualisation de la page après l'upload
-    location.reload();
+
     alert("Le nouveau projet a été ajouté avec succès.");
+    closeModal(modalUploadProjectContainer);
   } catch (error) {
     console.error("Erreur catch:", error);
     if (error.response) {

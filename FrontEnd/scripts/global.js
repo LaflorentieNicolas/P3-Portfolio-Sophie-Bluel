@@ -61,7 +61,6 @@ function AddProjectToPage(work) {
 }
 //Fonction permettant de générer les images sur la modal
 function AddProjectToModal(work) {
-  console.log(work);
   const figure = document.createElement("figure");
   const figureCaption = document.createElement("modal-figcaption");
   const figureImage = document.createElement("img");

@@ -19,10 +19,10 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <script src="./scripts/global.js" defer></script>
     <script src="./scripts/homePage.js" defer></script>
-    <script src="./scripts/global.js" async></script>
-    <script src="./scripts/modalDeleteProject.js" async></script>
-    <script src="./scripts/modalAddProject.js" async></script>
+    <script src="./scripts/modalDeleteProject.js" defer></script>
+    <script src="./scripts/modalAddProject.js" defer></script>
   </head>
   <body>
     <div class="black-bar" id="black-bar">
@@ -99,7 +99,6 @@
               <i data-target="#modal" class="fa-solid fa-xmark"></i>
             </button>
             <h3 class="modal-gallery-title">Galerie photo</h3>
-            <p id="error-modal-message"></p>
             <div class="modal-gallery" id="modal-gallery"></div>
             <button class="filter-button" id="add-project-button">
               Ajouter une photo

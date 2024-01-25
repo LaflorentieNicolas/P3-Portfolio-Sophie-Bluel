@@ -1,5 +1,3 @@
-const APIWORKS_URL = "http://localhost:5678/api/works";
-
 const modalWrapper = document.getElementById("modal-wrapper");
 const modalContainer = document.getElementById("modal");
 const modalUploadProjectContainer = document.getElementById("modal2");
@@ -64,26 +62,11 @@ const reponses = fetch("http://localhost:5678/api/works")
   .then((reponse) => reponse.json())
   .then((datas) => {
     datas.forEach((work) => {
-      const figure = document.createElement("figure");
-      const figureCaption = document.createElement("modal-figcaption");
-      const figureImage = document.createElement("img");
-      const deleteIcon = document.createElement("i");
-
-      figureImage.classList.add("modal-image");
-      figureImage.src = work.imageUrl;
-      figureImage.alt = work.title;
-      figure.className = work.category.name;
-
-      deleteIcon.className = "fa-regular fa-trash-can";
-      deleteIcon.dataset.id = work.id;
-      worksContainer.appendChild(figure);
-      figure.appendChild(figureImage);
-      figure.appendChild(figureCaption);
-      figure.appendChild(deleteIcon);
-      figure.setAttribute("data-id", work.id);
-
-      deleteIcon.addEventListener("click", function (event) {
+      const result = AddProjectToModal(work);
+      worksContainer.appendChild(result.figure);
+      result.deleteIcon.addEventListener("click", function (event) {
         event.preventDefault();
+
         deleteProjectById(work.id);
       });
     });
@@ -95,13 +78,14 @@ const errorMessageModal = document.getElementById("error-modal-message");
 const DELETE_ERROR = "Erreur de suppression.";
 
 function deleteProjectById(projectId) {
+  console.log(deleteProjectById);
   const token = localStorage.getItem("token");
   const confirmation = confirm(
     "Êtes-vous sûr de vouloir supprimer ce projet ?"
   );
 
   if (confirmation) {
-    fetch(`${APIWORKS_URL}/${projectId}`, {
+    fetch(`${API_WORKS}/${projectId}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

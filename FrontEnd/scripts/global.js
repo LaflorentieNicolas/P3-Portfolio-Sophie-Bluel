@@ -1,3 +1,7 @@
+// Stocke de l'URL Works de l'API sur une constante
+const API_WORKS = "http://localhost:5678/api/works";
+// Stocke de l'URL Categories de l'API sur une constante
+
 // Gestion de ce qui doit apparaitre sur index.html lorsque admin est log.
 
 // récupération des balises par leurs ID (login, logout et les filtres)
@@ -20,7 +24,7 @@ function getToken() {
 // Si un token existe, alors cela masque le bouton "login", filtres et modale, sinon cela masque logout
 function init() {
   const token = getToken();
-  console.log(token);
+
   if (token) {
     // Lorsque l'on click sur logout, permet de supprimer le token stocké dans le localStorage et de recharger la page
     logout.addEventListener("click", () => {
@@ -37,3 +41,42 @@ function init() {
 }
 
 init();
+
+//Fonction permettant de générer les images sur la homepage
+function AddProjectToPage(work) {
+  const figure = document.createElement("figure");
+  const figureCaption = document.createElement("figcaption");
+  const figureImage = document.createElement("img");
+
+  figureImage.src = work.imageUrl;
+  figureImage.alt = work.title;
+  figureCaption.innerHTML = work.title;
+  figure.setAttribute("data-id", work.id);
+  figure.setAttribute("category-id", work.categoryId);
+
+  figure.appendChild(figureImage);
+  figure.appendChild(figureCaption);
+
+  return figure;
+}
+//Fonction permettant de générer les images sur la modal
+function AddProjectToModal(work) {
+  console.log(work);
+  const figure = document.createElement("figure");
+  const figureCaption = document.createElement("modal-figcaption");
+  const figureImage = document.createElement("img");
+  const deleteIcon = document.createElement("i");
+
+  figureImage.classList.add("modal-image");
+  figureImage.src = work.imageUrl;
+  figureImage.alt = work.title;
+  figure.setAttribute("data-id", work.id);
+  deleteIcon.dataset.id = work.id;
+  deleteIcon.className = "fa-regular fa-trash-can";
+
+  figure.appendChild(figureImage);
+  figure.appendChild(figureCaption);
+  figure.appendChild(deleteIcon);
+
+  return { figure, deleteIcon };
+}

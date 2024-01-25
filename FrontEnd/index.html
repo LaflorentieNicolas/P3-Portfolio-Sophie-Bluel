@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="./scripts/homePage.js" defer></script>
     <script src="./scripts/global.js" async></script>
-    <script src="./scripts/modal1.js" async></script>
-    <script src="./scripts/modal2.js" async></script>
+    <script src="./scripts/modalDeleteProject.js" async></script>
+    <script src="./scripts/modalAddProject.js" async></script>
   </head>
   <body>
     <div class="black-bar" id="black-bar">
@@ -89,7 +89,7 @@
           aria-modal="false"
           style="display: none"
         >
-          <!----------Modal 1---------->
+          <!----------Modal Delete Project---------->
           <div class="modal-wrapper modal-stop" id="modal-wrapper">
             <button
               data-target="#modal"
@@ -107,7 +107,7 @@
           </div>
         </aside>
 
-        <!----------Modal 2---------->
+        <!----------Modal Upload Project---------->
         <aside
           class="modal"
           id="modal2"
@@ -152,8 +152,8 @@
               <label for="picture-title">Titre</label>
               <input type="text" name="picture-title" id="picture-title" />
 
-              <label for="category-choise">Catégorie</label>
-              <select name="category" id="modal-photo-category">
+              <label for="modal-photo-category">Catégorie</label>
+              <select name="modal-photo-category" id="modal-photo-category">
                 <option value="-1" selected></option>
               </select>
               <p class="upload-message-error" id="upload-message-error"></p>
@@ -162,6 +162,7 @@
                 <input
                   id="confirm-button"
                   type="submit"
+                  disabled
                   name="submit-button"
                   value="Valider"
                 />
@@ -191,9 +192,9 @@
         <p>Vous avez un projet ? Discutons-en !</p>
         <form action="#" method="post">
           <label for="name">Nom</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" autocomplete="on" />
           <label for="email">Email</label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" autocomplete="on" />
           <label for="message">Message</label>
           <textarea name="message" id="message" cols="30" rows="10"></textarea>
           <input type="submit" value="Envoyer" />

@@ -1,5 +1,3 @@
-// Stocke de l'URL de l'API sur une constante
-const API_WORKS = "http://localhost:5678/api/works";
 // Création d'un tableau vide afin de stocker les données de l'API
 let works = [];
 // Sélection des éléments filtres par ID dans le DOM

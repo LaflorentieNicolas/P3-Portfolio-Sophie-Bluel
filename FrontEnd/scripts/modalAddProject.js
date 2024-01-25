@@ -1,14 +1,12 @@
-const API_WORKS_URL = "http://localhost:5678/api/works";
 const API_CATEGORIES = "http://localhost:5678/api/categories";
-// Container de la modal 2
 
-// Récupération du bouton "Ajouter une photo" présent sur modal 1"
+// Récupération du bouton "Ajouter une photo" présent sur modalDeleteProject"
 const addProjectButton = document.getElementById("add-project-button");
 // Récupération du bouton <- de la modal 2
 const backButton = document.getElementById("back-button");
 // Récupération du bouton "+ Ajouter une photo"
 
-// Aller sur la modal 2 en clickant sur le bouton "Ajouter une photo" présent sur la modal 1
+// Se déplacer vers la modal 2 en clickant sur le bouton "Ajouter une photo" présent sur la modal 1
 addProjectButton.addEventListener("click", function () {
   modalContainer.style.display = "none";
   modalUploadProjectContainer.style.display = "flex";
@@ -81,7 +79,7 @@ async function loadCategories() {
 
     categories.forEach((category) => {
       const option = document.createElement("option");
-      option.value = category.name;
+      option.value = category.id;
       option.text = category.name;
       categorySelect.appendChild(option);
     });
@@ -105,14 +103,13 @@ function checkConfirmationButton(event) {
   // Empêcher la soumission du formulaire par défaut
   event.preventDefault();
   const selectedCategory = categorySelect.options[categorySelect.selectedIndex];
-  // Récupération des valeurs des champs
 
   const isSubmitButtonValid =
     pictureTitle.value.length > 1 &&
     selectedCategory.value !== "-1" &&
     thumbnailImage.value;
   // Vérification des conditions
-  console.log(thumbnailImage.value);
+
   if (isSubmitButtonValid) {
     // Si les conditions sont validées, alors le bouton n'est plus en disabled
     confirmButton.disabled = false;
@@ -147,4 +144,50 @@ confirmButton.addEventListener("click", function (event) {
   }
 });
 
-// ----------Ajouter des projets----------///////////////////////////////////////////////////////////
+// ----------Ajouter des projets----------
+async function addProject() {
+  const token = localStorage.getItem("token");
+
+  const formData = new FormData();
+  formData.append("image", thumbnailImage.files[0]);
+  formData.append("title", pictureTitle.value);
+  formData.append("category", categorySelect.value);
+
+  try {
+    const response = await fetch(API_WORKS, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Erreur lors de l'ajout du projet. Code HTTP ${response.status}`
+      );
+    }
+
+    const work = await response.json();
+
+    // Création et ajout du nouveau projet à la galerie
+    const figure = AddProjectToPage(work);
+    const gallery = document.querySelector(".gallery");
+    gallery.appendChild(figure);
+
+    // Création et ajout du nouveau projet à la galerie modale
+    const result = AddProjectToModal(work);
+
+    const galleryModal = document.getElementById("modal-gallery");
+
+    galleryModal.appendChild(result.figure);
+    //Actualisation de la page après l'upload
+    location.reload();
+    alert("Le nouveau projet a été ajouté avec succès.");
+  } catch (error) {
+    console.error("Erreur catch:", error);
+    if (error.response) {
+      console.error("Réponse du serveur:", await error.response.json());
+    }
+  }
+}

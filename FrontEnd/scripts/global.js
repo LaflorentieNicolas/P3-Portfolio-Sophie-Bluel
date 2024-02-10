@@ -42,7 +42,7 @@ function init() {
 
 init();
 
-//Fonction permettant de générer les images sur la homepage
+//Fonction permettant de générer les images
 function AddProjectToPage(work) {
   const figure = document.createElement("figure");
   const figureCaption = document.createElement("figcaption");

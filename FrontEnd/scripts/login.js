@@ -8,10 +8,11 @@ const form = document.getElementById("form-login");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const errorMessageElement = document.getElementById("error-message");
+
 // événement sur submit du formulaire, en async car attente de réponse de l'API
 form.addEventListener("submit", async function (event) {
   event.preventDefault(); // Empêcher le comportement par défaut du formulaire (rechargement de la page)
-  // Récupération des champs email et password
+  // Récupération des valeurs pour les stocker dans les variables email et password
   const email = emailInput.value;
   const password = passwordInput.value;
 

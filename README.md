@@ -6,10 +6,14 @@ Dans ce projet, je suis développeur front-end pour l'agence ArchiWebos.
 Ma mission est de travailler sur la conception du site portfolio d'une architecte d'intérieur.  
 Avec l'aide des designs Figma, du code back-end et du kanban, je dois concevoir, tester et implémenter de nouvelles fonctionnalités.
 
+---
+
 ## Outils
 
 - **Node.js**
 - **Documentation d'une API avec Swagger**
+
+---
 
 ## Ressources
 
@@ -30,7 +34,6 @@ Avec l'aide des designs Figma, du code back-end et du kanban, je dois concevoir,
 **Objectif :**  
 Les projets provenant du back-end doivent s'afficher dans la galerie, avec la possibilité de filtrer par catégorie grâce à un menu généré dynamiquement.
 
----
 
 ### Étape 2 : Création de la page de connexion "Admin"
 
@@ -40,7 +43,6 @@ Les projets provenant du back-end doivent s'afficher dans la galerie, avec la po
    - Stocker le token d'authentification.  
    - Rediriger l'utilisateur vers la page principale avec des options supplémentaires "Admin" (par exemple, la possibilité de modifier la galerie).
 
----
 
 ### Étape 3 : Gestion des modifications dans la galerie
 
